@@ -1,0 +1,17 @@
+segments = [
+    "ATGAG",
+    "AGGAA",
+    "AATTT"
+]
+
+assembled_dna = segments[0]
+
+for segment in segments[1:]:
+    overlap = 0
+    for i in range(len(segment), -1, -1):
+        if assembled_dna.endswith(segment[:i]):
+            overlap = i
+            break
+    assembled_dna += segment[overlap:]
+
+print(assembled_dna)
